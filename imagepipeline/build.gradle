@@ -156,7 +156,8 @@ def makeNdkTasks(String name) {
     task "ndk_build_$name"(type: Exec) {
         inputs.file("src/main/jni/$name")
         outputs.dir("$buildDir/$name")
-        commandLine getNdkBuildFullPath(),
+        //commandLine getNdkBuildFullPath(),
+        commandLine "C:\\android-ndk-r10c\\ndk-build.cmd",
             'NDK_PROJECT_PATH=null',
             'NDK_APPLICATION_MK=../Application.mk',
             'NDK_OUT=' + temporaryDir,
@@ -167,7 +168,8 @@ def makeNdkTasks(String name) {
 
     task "ndk_clean_$name"(type: Exec) {
         ignoreExitValue true
-        commandLine getNdkBuildFullPath(),
+        //commandLine getNdkBuildFullPath(),
+        commandLine "C:\\android-ndk-r10c\\ndk-build.cmd",
             'NDK_PROJECT_PATH=null',
             'NDK_APPLICATION_MK=../Application.mk',
             'NDK_OUT=' + temporaryDir,
